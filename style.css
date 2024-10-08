@@ -1,0 +1,51 @@
+/* @font-face {
+    font-family: "bradfordMedium";
+    src: url("../resource/BradfordLL-Medium.otf");
+} */
+
+body {
+    margin: 8vw;
+    background-color: rgb(233, 233, 233);
+    font-family: 'Courier New', Courier, monospace;
+    width: 100%;
+    height: inherit;
+    overflow: hidden;
+}
+
+a:visited {
+    color: hotpink;
+    text-decoration: none;
+}
+
+p, pre {
+    width: 84%;
+    font-size: 2.5vh;
+    /* background-color: rgb(255, 0, 0); */
+    font-family: 'Courier New', Courier, monospace !important;
+    color: hwb(0 0% 100%);
+}
+
+.enter {
+    text-align: end;
+}
+
+.no:hover {
+    display: none;
+}
+
+.clickable:hover {
+    background-color: yellow;    
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    /* background-color: green; */
+    width: 84%;
+    align-items: flex-end;
+    gap: 5vw;
+}
+
+#huey:hover {
+    /* background-color: blue; */
+}
