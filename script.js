@@ -2,7 +2,19 @@
 
 let huey = document.querySelector(".huey");
 function openHuey() {
-    window.open("popup", 'width=1000, height=500')
+    var window1 = window.open("", "", 'width=400, height=300')
+    window1.document.write("<p><img src='../resource/images/huey2.jpg' width='400' /></p>");
+
+    var window2 = window.open("", "", 'width=500, height=500')
+    window2.document.write("<p><img src='../resource/images/huey5.png' width='500' /></p>");
+
+    var window3 = window.open("", "", 'width=200, height=200')
+    window3.document.write("<p><img src='../resource/images/huey1.jpg' width='200' /></p>");
+
+    tmot1 = setTimeout(function(){window1.close()}, 4000);
+    tmot2 = setTimeout(function(){window2.close()}, 3000);
+    tmot3 = setTimeout(function(){window3.close()}, 2000);
+
 }
 
-console.log('huey is selected');
+// console.log('huey is selected');
