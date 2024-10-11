@@ -9,11 +9,23 @@ body {
     font-family: 'Courier New', Courier, monospace;
     width: 100%;
     height: inherit;
+    /* overflow: hidden; */
+}
+
+.body-about,.body-intern,.body-links{
     overflow: hidden;
+}
+.body-me,.body-background, .body-things{
+    overflow-x:hidden;
+    overflow-y: auto;
+}
+
+.body-links {
+
 }
 
 a:visited {
-    color: hotpink;
+    color: black;
     text-decoration: none;
 }
 
@@ -32,9 +44,19 @@ p, pre {
 .no:hover {
     display: none;
 }
+.no:hover ~ .yes{
+    display: inline;
+}
+.yes {
+    display: none;
+}
 
+
+.clickable {
+    text-decoration: none;
+}
 .clickable:hover {
-    background-color: yellow;    
+    background-color: yellow; 
 }
 
 .container {
@@ -48,4 +70,10 @@ p, pre {
 
 #huey:hover {
     /* background-color: blue; */
+}
+
+.me {
+    background-color: white;
+    padding: 2vw;
+    width: 80%;
 }

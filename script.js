@@ -14,7 +14,5 @@ function openHuey() {
     tmot1 = setTimeout(function(){window1.close()}, 4000);
     tmot2 = setTimeout(function(){window2.close()}, 3000);
     tmot3 = setTimeout(function(){window3.close()}, 2000);
-
 }
-
 // console.log('huey is selected');
