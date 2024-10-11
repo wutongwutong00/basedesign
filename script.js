@@ -3,7 +3,7 @@
 let huey = document.querySelector(".huey");
 function openHuey() {
     var window1 = window.open("", "", 'width=400, height=300')
-    window1.document.write("<img src='resource/images/huey2.jpg' width='400'/>");
+    window1.document.write("<img src='https://raw.githubusercontent.com/wutongwutong00/basedesign/main/resource/images/huey2.jpg' width='400'/>");
 
     var window2 = window.open("", "", 'width=500, height=500')
     window2.document.write("<img src='resource/images/huey5.png' width='500'/>");
