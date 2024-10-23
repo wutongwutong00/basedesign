@@ -16,3 +16,5 @@ function openHuey() {
     tmot3 = setTimeout(function(){window3.close()}, 2000);
 }
 // console.log('huey is selected');
+
+

@@ -1,0 +1,18 @@
+.typebody {
+    margin: 3vw;
+    /* background-color: bisque; */
+    background-color: gray;
+}
+.typecontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+img {
+    width: 5vw;
+    filter: grayscale(100%);
+}
+img:hover {
+    filter: grayscale(4%);
+}
