@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 const keyImageMap = {
-    'a': '../images/a.jpg',
+    'a': 'https://wutongwutong00.github.io/basedesign/typeme/images/a.jpg',
     'b': '../images/b.jpg',
     'c': '../images/c.jpg',
     'd': '../images/d.jpg',
