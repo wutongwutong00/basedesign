@@ -1,7 +1,7 @@
 .typebody {
     margin: 3vw;
     /* background-color: bisque; */
-    background-color: gray;
+    background-color: lightgray;
 }
 .typecontainer {
     display: flex;
