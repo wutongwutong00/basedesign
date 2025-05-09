@@ -61,7 +61,7 @@ void main() {
 }
 `,
   inputs: {
-    iChannel0: '/assets/1.png',  // <- replace with your text image URL
-    iChannel1: '/assets/1.png',  // <- seamless noise texture
+    iChannel0: '../assets/1.png',  // <- replace with your text image URL
+    iChannel1: '../assets/1.png',  // <- seamless noise texture
   }
 });
