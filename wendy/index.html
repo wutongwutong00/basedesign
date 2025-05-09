@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wendy water test</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+        var width = 350;
+        var height = 275;
+        
+        function init(){
+            var waterModel = new WaterModel(width, height, {
+                    resolution:2.0,
+                    interpolate:false,
+                    damping:0.985,
+                    clipping:5,
+                    evolveThreshold:0.05,
+                    maxFps:30,
+                    showStats:true
+                });
+            var waterCanvas = new WaterCanvas(width, height,
+                "waterHolder", waterModel, {
+                    backgroundImageUrl:"images/yourimage.jpg",
+                    lightRefraction:9.0,
+                    lightReflection:0.1,
+                    maxFps:20,
+                    showStats:true
+                });
+        }
+        </script>
+</head>
+<body onload="init()">
+    <div class="container">
+        <div class="box" id="rippleCanvas">
+            <div class="image" id="waterHolder"><img src="/assets/1.png"></div><span>Todo Menino é um Mar.</span>
+            </div>
+        <div class="empty"></div>
+        <div class="box">
+            <div class="image"><img src="/assets/2.png"></div><span>Coragem.</span>
+            </div>
+        <div class="box">
+            <div class="image"><img src="/assets/3.JPG.png"></div><span>Retrato Negro.</span>
+            </div>    
+        <div class="empty"></div>
+        <div class="empty"></div>
+        <div class="box" >
+            <div class="image tall"><img src="/assets/4.png"></div><span>Retrato Negro.</span>
+            </div>
+        <div class="empty"></div>
+        <div class="empty"></div>
+        <div class="box">
+            <div class="image"><img src="/assets/5.png"></div><span>Retrato Negro.</span>
+            </div>    
+        <div class="box">
+            <div class="image"><img src="/assets/6.png"></div><span>Retrato Negro.</span>
+            </div>
+        <div class="empty"></div>
+        <div class="box">
+            <div class="image"><img src="/assets/7.png"></div><span>Retrato Negro.</span>
+            </div>   
+        <div class="empty"></div>
+        <div class="empty"></div>
+        <div class="empty"></div>
+        <div class="box">
+            <div class="image"><img src="/assets/8.png"></div><span>Retrato Negro.</span>
+            </div>    
+        <div class="empty"></div>
+        <div class="box">
+            <div class="image tall"><img src="/assets/9.png"></div><span>Retrato Negro.</span>
+            </div>
+        <div class="box">
+            <div class="image tall"><img src="/assets/10.png"></div><span>Retrato Negro.</span>
+            </div>   
+</div>
+
+<script src="watercanvas.js"></script>
+</body>
+</html>

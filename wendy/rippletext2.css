@@ -1,0 +1,36 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: white;
+    overflow: scroll;
+  }
+
+canvas {
+    display: block;
+    width: 90vw;
+    height: 100vh;
+    position: fixed;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%,-50%);
+ z-index: -1;
+  }
+
+img {
+  z-index: 100;
+  width: 20vw;
+  height: auto;
+  align-self: center;
+}
+
+span {
+  height: 500vh;
+  display: flex;
+  position: absolute;
+  left: 50%;
+  top: 150%;
+  transform: translate(-50%,-50%);
+  /* background-color: aquamarine; */
+  overflow: scroll;
+}

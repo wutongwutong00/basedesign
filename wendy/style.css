@@ -1,0 +1,53 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: small;
+}
+
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    /* gap: 2vw; */
+    position: absolute;
+    left: 50%;
+    top: 95%;
+    transform: translate(-50%,-50%);
+    width: 100vw;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-self: baseline;
+    height: auto;
+    padding: 1vw;
+    width: 18vw;
+    /* background-color: aqua; */
+    align-items: flex-start;
+}
+
+.empty {
+    padding: 1vw;
+    width: 18vw;
+}
+
+.image {
+    width: 18vw;
+    /* background-color: red; */
+    padding-bottom: 1vw;
+    display: flex;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* background-color: blue; */
+}
+
+.tall {
+    height: 17vw;
+    width: 12vw;
+    /* transform: scale(0.7); */
+    transform-origin: bottom;
+    /* background-color: palegreen; */
+}

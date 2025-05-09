@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ripple text on scroll</title>
+  <link rel="stylesheet" href="rippletext2.css" />
+</head>
+<body>
+    <!-- <span>
+    <img src="assets/3.JPG.png">
+    </span> -->
+    <canvas id="rippleCanvas" class="item"></canvas>
+
+ 
+  <script>
+ let canvas, ctx;
+  let width, height;
+  let size;
+  let rippleMap1, rippleMap2;
+  let backgroundImage, backgroundPixels;
+  let initialized = false;
+
+  function init() {
+    canvas = document.getElementById('rippleCanvas');
+    ctx = canvas.getContext('2d');
+    resizeCanvas();
+
+    backgroundImage = new Image();
+    backgroundImage.src = '/assets/newhome.png'; // 🔁 Replace with your image path
+    backgroundImage.onload = () => {
+      ctx.drawImage(backgroundImage, 0, 0, width, height);
+      const imgData = ctx.getImageData(0, 0, width, height);
+      backgroundPixels = imgData.data.slice(); // Copy pixel buffer
+      size = width * height;
+      rippleMap1 = new Int32Array(size);
+      rippleMap2 = new Int32Array(size);
+      canvas.addEventListener('mousemove', e => disturb(e.offsetX, e.offsetY));
+//     canvas.addEventListener('mousemove', e => {
+//   const rect = canvas.getBoundingClientRect();
+//   const scaleX = canvas.width / rect.width;
+//   const scaleY = canvas.height / rect.height;
+//   const x = (e.clientX - rect.left) * scaleX;
+//   const y = (e.clientY - rect.top) * scaleY;
+//   disturb(x, y);
+// });
+
+      setInterval(runRipple, 10);
+      initialized = true;
+    };
+
+    window.addEventListener('resize', () => {
+      if (backgroundImage.complete) init(); // re-init on resize if image is ready
+    });
+  }
+
+  function resizeCanvas() {
+    let box = document.getElementById('rippleCanvas');
+    width = canvas.width = box.width*7;
+    height = canvas.height = box.height*7;
+  }
+
+function disturb(x, y) {
+  if (!initialized) return;
+
+  const radius = 200; // 🔧 Ripple size (increase for bigger splash)
+  const strength = 2; // 🔧 Ripple strength
+
+  for (let j = -radius; j <= radius; j++) {
+  for (let k = -radius; k <= radius; k++) {
+    const distSq = j * j + k * k;
+    if (distSq <= radius * radius) {
+      const dx = x + k;
+      const dy = y + j;
+      if (dx >= 0 && dx < width && dy >= 0 && dy < height) {
+        const falloff = 1 - Math.sqrt(distSq) / radius;
+        rippleMap1[dy * width + dx] += strength * falloff;
+      }
+    }
+  }
+}
+}
+
+  function runRipple() {
+    if (!initialized) return;
+    const imageData = ctx.createImageData(width, height);
+    const pixels = imageData.data;
+
+    for (let i = 0; i < size; i++) {
+      const data =
+        (rippleMap1[i - width] +
+         rippleMap1[i + width] +
+         rippleMap1[i - 1] +
+         rippleMap1[i + 1]) >> 1;
+
+      let newData = data - rippleMap2[i];
+      newData -= newData >> 5;
+      rippleMap2[i] = newData;
+
+      // const offset = ((newData - rippleMap1[i]) * 2 + i) % size;
+      let offset = (newData - rippleMap1[i]) * 2 + i;
+      offset = Math.max(0, Math.min(size - 1, offset));
+      const pixel = i * 4;
+      const offsetPixel = (offset * 4) % backgroundPixels.length;
+
+      // pixels[pixel]     = backgroundPixels[offsetPixel];
+      // pixels[pixel + 1] = backgroundPixels[offsetPixel + 1];
+      // pixels[pixel + 2] = backgroundPixels[offsetPixel + 2];
+      // pixels[pixel + 3] = 255;
+
+      const alpha = backgroundPixels[offsetPixel + 3];
+
+if (alpha > 128) {
+  pixels[pixel]     = backgroundPixels[offsetPixel];
+  pixels[pixel + 1] = backgroundPixels[offsetPixel + 1];
+  pixels[pixel + 2] = backgroundPixels[offsetPixel + 2];
+  pixels[pixel + 3] = alpha;
+} else {
+  // Fully transparent background: keep as transparent
+  pixels[pixel]     = 0;
+  pixels[pixel + 1] = 0;
+  pixels[pixel + 2] = 0;
+  pixels[pixel + 3] = 0;
+}
+
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+    const temp = rippleMap1;
+    rippleMap1 = rippleMap2;
+    rippleMap2 = temp;
+  }
+
+  window.onload = init;
+  </script>
+</body>
+</html>
